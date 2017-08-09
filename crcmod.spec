@@ -6,7 +6,7 @@ Name     : crcmod
 Version  : 1.7
 Release  : 3
 URL      : http://pypi.debian.net/crcmod/crcmod-1.7.tar.gz
-Source0  : http://pypi.debian.net/crcmod/crcmod-1.7.tar.gz
+Source0  : https://pypi.python.org/packages/6b/b0/e595ce2a2527e169c3bcd6c33d2473c1918e0b7f6826a043ca1245dd4e5b/crcmod-1.7.tar.gz
 Summary  : CRC Generator
 Group    : Development/Tools
 License  : MIT
