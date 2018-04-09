@@ -4,13 +4,12 @@
 #
 Name     : crcmod
 Version  : 1.7
-Release  : 10
+Release  : 11
 URL      : http://pypi.debian.net/crcmod/crcmod-1.7.tar.gz
 Source0  : http://pypi.debian.net/crcmod/crcmod-1.7.tar.gz
 Summary  : CRC Generator
 Group    : Development/Tools
 License  : MIT
-Requires: crcmod-legacypython
 Requires: crcmod-python3
 Requires: crcmod-python
 BuildRequires : pbr
@@ -60,19 +59,9 @@ crcmod for Calculating CRCs
         
         The package has separate code to support the 2.x and 3.x Python series.
 
-%package legacypython
-Summary: legacypython components for the crcmod package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the crcmod package.
-
-
 %package python
 Summary: python components for the crcmod package.
 Group: Default
-Requires: crcmod-legacypython
 Requires: crcmod-python3
 
 %description python
@@ -96,25 +85,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507152044
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523287446
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1507152044
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
