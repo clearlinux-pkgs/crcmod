@@ -4,9 +4,9 @@
 #
 Name     : crcmod
 Version  : 1.7
-Release  : 28
-URL      : http://pypi.debian.net/crcmod/crcmod-1.7.tar.gz
-Source0  : http://pypi.debian.net/crcmod/crcmod-1.7.tar.gz
+Release  : 29
+URL      : https://files.pythonhosted.org/packages/6b/b0/e595ce2a2527e169c3bcd6c33d2473c1918e0b7f6826a043ca1245dd4e5b/crcmod-1.7.tar.gz
+Source0  : https://files.pythonhosted.org/packages/6b/b0/e595ce2a2527e169c3bcd6c33d2473c1918e0b7f6826a043ca1245dd4e5b/crcmod-1.7.tar.gz
 Summary  : CRC Generator
 Group    : Development/Tools
 License  : MIT
@@ -16,9 +16,45 @@ Requires: crcmod-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-===========================
 crcmod for Calculating CRCs
-===========================
+        ===========================
+        
+        The software in this package is a Python module for generating objects that
+        compute the Cyclic Redundancy Check (CRC).  There is no attempt in this package
+        to explain how the CRC works.  There are a number of resources on the web that
+        give a good explanation of the algorithms.  Just do a Google search for "crc
+        calculation" and browse till you find what you need.  Another resource can be
+        found in chapter 20 of the book "Numerical Recipes in C" by Press et. al.
+        
+        This package allows the use of any 8, 16, 24, 32, or 64 bit CRC.  You can
+        generate a Python function for the selected polynomial or an instance of the
+        Crc class which provides the same interface as the ``md5`` and ``sha`` modules
+        from the Python standard library.  A ``Crc`` class instance can also generate
+        C/C++ source code that can be used in another application.
+        
+        ----------
+        Guidelines
+        ----------
+        
+        Documentation is available from the doc strings.  It is up to you to decide
+        what polynomials to use in your application.  If someone has not specified the
+        polynomials to use, you will need to do some research to find one suitable for
+        your application.  Examples are available in the unit test script ``test.py``.
+        You may also use the ``predefined`` module to select one of the standard
+        polynomials.
+        
+        If you need to generate code for another language, I suggest you subclass the
+        ``Crc`` class and replace the method ``generateCode``.  Use ``generateCode`` as
+        a model for the new version.
+        
+        ------------
+        Dependencies
+        ------------
+        
+        Python Version
+        ^^^^^^^^^^^^^^
+        
+        The package has separate code to support the 2.x and 3.x Python series.
 
 %package license
 Summary: license components for the crcmod package.
@@ -56,12 +92,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582914022
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603388938
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
